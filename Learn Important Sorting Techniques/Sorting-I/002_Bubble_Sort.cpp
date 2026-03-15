@@ -1,19 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void selectionSort(int arr[], int n)
+void bubbleSort(int a[], int n)
 {
     for (int i = 0; i <= n - 2; ++i)
     {
-        int min_index = i;
-        for (int j = i + 1; j <= n - 1; ++j)
+        int isSwapped = 0;
+        for (int j = 0; j <= n - i - 1; ++j)
         {
-            if (arr[j] < arr[min_index])
+            if (a[j + 1] < a[j])
             {
-                min_index = j;
+                swap(a[j + 1], a[j]);
+                isSwapped = 1;
             }
         }
-        swap(arr[i], arr[min_index]);
+        if (!isSwapped)
+            break;
     }
 }
 
@@ -21,7 +23,7 @@ int main()
 {
     int n = 5;
     int arr[n] = {64, 25, 12, 22, 11};
-    selectionSort(arr, n);
+    bubbleSort(arr, n);
     for (int i = 0; i < n; ++i)
         cout << arr[i] << " ";
 }
